@@ -1,0 +1,98 @@
+ [
+    {
+      "img": "products/product1.png",
+      "title": "Apollo Running Short",
+      "other_img":[
+        "products/product1.png","products/product1.png","products/product1.png"
+      ],
+      "sizes":[
+        "xs","s","m","l"
+      ],
+      "colors":["#D3D2D5", "#2B2B2B","#0F6450"],
+      "price": "50",
+      "outofstock": false,
+      "description":
+        "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+      "id": 0
+    },
+    {
+      "img": "products/product2.png",
+      "title": "Apollo Running Short",
+       "other_img":[
+        "products/product2.png","products/product2.png","products/product2.png"
+      ],
+      "sizes":[
+        "xs","s","m","l"
+      ],
+      "colors":["#D3D2D5", "#2B2B2B","#0F6450"],
+      "price": 50,
+      "outofstock": false,
+      "description":
+        "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+      "id": 1
+    },
+    {
+      "img": "products/product3.png",
+      "title": "Apollo Running Short",
+       "other_img":[
+        "products/product3.png","products/product3.png","products/product3.png"
+      ],
+      "sizes":[
+        "xs","s","m","l"
+      ],
+      "colors":["#D3D2D5", "#2B2B2B","#0F6450"],
+      "price": "50",
+      "outOfStock": true,
+      "description":
+        "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+      "id": 2
+    },
+    {
+      "img": "products/product1.png",
+      "title": "Apollo Running Short",
+       "other_img":[
+        "products/product1.png","products/product1.png","products/product1.png"
+      ],
+      "sizes":[
+        "xs","s","m","l"
+      ],
+      "colors":["#D3D2D5", "#2B2B2B","#0F6450"],
+      "price": 50,
+      "outofstock": false,
+      "description":
+        "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+      "id": 3
+    },
+    {
+      "img": "products/product2.png",
+      "title": "Apollo Running Short",
+       "other_img":[
+        "products/product2.png","products/product2.png","products/product2.png"
+      ],
+      "sizes":[
+        "xs","s","m","l"
+      ],
+      "colors":["#D3D2D5", "#2B2B2B","#0F6450"],
+      "price": 50,
+      "outofstock": false,
+      "description":
+        "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+      "id": 4
+    },
+    {
+      "img":"products/product3.png",
+      "title": "Apollo Running Short",
+       "other_img":[
+        "products/product3.png","products/product3.png","products/product3.png"
+      ],
+      "sizes":[
+        "xs","s","m","l"
+      ],
+      "colors":["#D3D2D5", "#2B2B2B","#0F6450"],
+      "price": 50,
+      "outofstock": false,
+      "description":
+        "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+      "id": 5
+    }
+  ]
