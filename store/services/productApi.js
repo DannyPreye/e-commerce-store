@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { HYDRATE } from 'next-redux-wrapper';
-// tests
 
-export const productApi = createApi({
+const productApi = createApi({
   reducerPath: 'productApi',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
@@ -19,5 +18,6 @@ export const productApi = createApi({
     }),
   }),
 });
+export default productApi;
 
 export const { useGetAllProductsQuery, useGetProductDetailsQuery } = productApi;

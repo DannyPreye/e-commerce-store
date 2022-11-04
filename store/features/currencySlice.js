@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { productApi } from '../services/productApi';
+import productApi from '../services/productApi';
 
 const initialState = {
   currency: '$',

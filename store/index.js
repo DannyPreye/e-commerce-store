@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import cartReducer, { addToAmount, addToCount } from './features/cartSlice';
 import currencyReducer from './features/currencySlice';
-import { productApi } from './services/productApi';
+import productApi from './services/productApi';
 
 const store = configureStore({
   reducer: {
