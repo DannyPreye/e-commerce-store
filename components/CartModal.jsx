@@ -6,9 +6,12 @@ import CartCard from './CartCard';
 const CartModal = ({ openModal, setOpenModal }) => {
   const { add_total_amount } = DispatchActions();
   const { cart, total_cart_count } = GetProducts();
-  const [total_cart_price, setTotal_cart_price] = useState(
-    cart.reduce((total, prod) => total + prod.price, 0)
+
+  const total = cart?.reduce(
+    (total, product) => total + Number(product.totalPrice),
+    0
   );
+  const tax = total * 0.21;
 
   return (
     <div
@@ -34,7 +37,7 @@ const CartModal = ({ openModal, setOpenModal }) => {
 
           <div className='flex justify-between mt-[43px] text-[16px]'>
             <p className='font-roboto  font-[500]'>Total</p>
-            <p className='font-[700]'>${total_cart_price}</p>
+            <p className='font-[700]'>${total + tax}</p>
           </div>
 
           <div className='flex gap-x-[12px] mt-[32px]'>

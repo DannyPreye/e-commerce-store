@@ -7,6 +7,7 @@ const GetProducts = () => {
   const total_cart_count = useSelector((state) => state.cart.total_prod_count);
   const total_cart_price = useSelector((state) => state.cart.total_amount);
   const currency = useSelector((state) => state.currency.currency);
+  const tax = useSelector((state) => state.cart.tax);
 
   const {
     data: products,
@@ -22,6 +23,7 @@ const GetProducts = () => {
     currency,
     total_cart_price,
     total_cart_count,
+    tax,
   };
 };
 export default GetProducts;

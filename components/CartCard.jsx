@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { GetProducts } from '../helper';
+import { GetProducts, DispatchActions } from '../helper';
 
 const CartCard = ({ cartItem }) => {
-  const { currency,  } = GetProducts();
+  const { currency, tax } = GetProducts();
+  const {
+    increment_cart_product_count,
+    decrement_cart_product_count,
+    add_to_count,
+    add_price,
+  } = DispatchActions();
   const [productSize, setProductSize] = useState('');
   const [productColor, setProductColor] = useState('');
   const [totalProduct, setTotalProduct] = useState(1);
@@ -67,14 +73,14 @@ const CartCard = ({ cartItem }) => {
       <div className='flex gap-x-2'>
         <div className='flex flex-col justify-between items-center h-full'>
           <button
-            onClick={() => setTotalProduct((prev) => prev + 1)}
+            onClick={() => increment_cart_product_count(cartItem.id)}
             className='w-[24px] hover:bg-textColor hover:text-white h-[24px] border-textColor border-[1px] text-center'
           >
             +
           </button>
           <p>{cartItem.count}</p>
           <button
-            onClick={() => setTotalProduct((prev) => prev && prev - 1)}
+            onClick={() => decrement_cart_product_count(cartItem.id)}
             className='w-[24px] hover:bg-textColor hover:text-white h-[24px]  border-textColor border-[1px] text-center'
           >
             -

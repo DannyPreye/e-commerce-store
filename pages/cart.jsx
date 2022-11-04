@@ -148,7 +148,6 @@ const cart = () => {
           </span>
           <span>Total:</span>{' '}
           <span className='font-[700]'>
-            {' '}
             {currency}
             {totalPrice + tax + totalProduct}
           </span>
