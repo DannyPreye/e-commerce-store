@@ -48,14 +48,16 @@ const CartModal = ({ openModal, setOpenModal }) => {
                 VIEW BAG
               </button>
             </Link>
-            <button
-              onClick={() => {
-                setOpenModal(false);
-              }}
-              className='w-[140px] h-[43px] text-white bg-primary text-center hover:text-textColor hover:bg-white hover:border-[1px] font-[600] text-[14px] hover:border-textColor'
-            >
-              CHECKOUT
-            </button>
+            <Link href={'/checkout'}>
+              <button
+                onClick={() => {
+                  setOpenModal(false);
+                }}
+                className='w-[140px] h-[43px] text-white bg-primary text-center hover:text-textColor hover:bg-white hover:border-[1px] font-[600] text-[14px] hover:border-textColor'
+              >
+                CHECKOUT
+              </button>
+            </Link>
           </div>
         </div>
       </div>
