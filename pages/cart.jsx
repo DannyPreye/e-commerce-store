@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import { DispatchActions } from '../helper';
 
 const cart = () => {
+  const {
+    increment_cart_product_count,
+    decrement_cart_product_count,
+    add_price,
+    add_total_amount,
+    add_to_count,
+  } = DispatchActions();
   const products = useSelector((state) => state.cart.products);
   const currency = useSelector((state) => state.currency.currency);
   const [productSize, setProductSize] = useState('');
   const [productColor, setProductColor] = useState('');
   const [totalProduct, setTotalProduct] = useState(0);
   const totalPrice = products?.reduce(
-    (total, product) => total + Number(product.price),
+    (total, product) => total + Number(product.totalPrice),
     0
   );
   const tax = totalPrice * 0.21;
 
   return (
-    <main className='font-raleway container mx-auto '>
+    <main className='font-raleway container mx-auto pb-8 '>
       <h1 className='font-[600] text-[32px] '>CART</h1>
       <div className='mt-[55px] '>
         {products?.map((product, id) => (
@@ -35,7 +44,7 @@ const cart = () => {
               {/* Price */}
               <p className='font-[700] text-[24px] mt-[20px]'>
                 {currency}
-                {product?.price}
+                {product?.totalPrice * product?.count}
               </p>
 
               {/* Sizes */}
@@ -88,14 +97,24 @@ const cart = () => {
             <div className='flex gap-x-[24px] items-center'>
               <div className='flex flex-col justify-between items-center h-full'>
                 <button
-                  onClick={() => setTotalProduct((prev) => prev + 1)}
+                  onClick={() => {
+                    increment_cart_product_count(product.id);
+                    add_price();
+                    add_total_amount();
+                    add_to_count();
+                  }}
                   className='w-[45px] h-[45px] hover:bg-textColor hover:text-white  border-textColor border-[1px] text-center'
                 >
                   +
                 </button>
-                <p>{totalProduct}</p>
+                <p>{product?.count}</p>
                 <button
-                  onClick={() => setTotalProduct((prev) => prev && prev - 1)}
+                  onClick={() => {
+                    decrement_cart_product_count(product.id);
+                    add_price();
+                    add_total_amount();
+                    add_to_count();
+                  }}
                   className='w-[45px] h-[45px] hover:bg-textColor hover:text-white   border-textColor border-[1px] text-center'
                 >
                   -
@@ -119,12 +138,14 @@ const cart = () => {
           <span className='font-[700]'>
             {currency}
             {products?.reduce(
-              (total, product) => total + Number(product.price),
+              (total, product) => total + Number(product.totalPrice),
               0
             ) * 0.21}
           </span>
           <span>Quantity:</span>{' '}
-          <span className='font-[700]'>{totalProduct}</span>
+          <span className='font-[700]'>
+            {products.reduce((total, elm) => total + elm.count, 0)}
+          </span>
           <span>Total:</span>{' '}
           <span className='font-[700]'>
             {' '}
@@ -132,9 +153,11 @@ const cart = () => {
             {totalPrice + tax + totalProduct}
           </span>
         </div>
-        <button className='w-[279px] h-[43px] bg-primary text-white text-center font-raleway font-[600]'>
-          ORDER
-        </button>
+        <Link href={'/checkout'}>
+          <button className='w-[279px] h-[43px] bg-primary text-white text-center font-raleway font-[600]'>
+            ORDER
+          </button>
+        </Link>
       </div>
     </main>
   );

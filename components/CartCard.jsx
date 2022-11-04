@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { useSelector } from 'react-redux';
+import { GetProducts } from '../helper';
 
 const CartCard = ({ cartItem }) => {
-  const currency = useSelector((state) => state.currency.currency);
+  const { currency,  } = GetProducts();
   const [productSize, setProductSize] = useState('');
   const [productColor, setProductColor] = useState('');
   const [totalProduct, setTotalProduct] = useState(1);
@@ -19,7 +19,7 @@ const CartCard = ({ cartItem }) => {
         </p>
         <p className='font-[500] text-[16px] mt-[4px] '>
           {currency}
-          {cartItem?.price}
+          {cartItem?.totalPrice}
         </p>
 
         {/* Sizes */}
@@ -72,7 +72,7 @@ const CartCard = ({ cartItem }) => {
           >
             +
           </button>
-          <p>{totalProduct}</p>
+          <p>{cartItem.count}</p>
           <button
             onClick={() => setTotalProduct((prev) => prev && prev - 1)}
             className='w-[24px] hover:bg-textColor hover:text-white h-[24px]  border-textColor border-[1px] text-center'

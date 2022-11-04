@@ -8,11 +8,15 @@ const ProductDetails = ({ product }) => {
   const [productSize, setProductSize] = useState(product?.sizes[0]);
   const [productColor, setProductColor] = useState(product?.colors[0]);
   const currency = useSelector((state) => state.currency.currency);
-  const productToCart = {
+  const productCount = 1;
+  const cartProducts = {
     title: product?.title,
-    selectedSize: [productSize],
-    price: product?.price,
-    colors: [productColor],
+    img: product?.img,
+    totalPrice: product?.price * productCount,
+    count: 1,
+    colors: product?.colors,
+    sizes: product?.sizes,
+    id: product?.id,
   };
 
   return (
@@ -103,7 +107,7 @@ const ProductDetails = ({ product }) => {
 
         {/* Add to cart Button */}
         <button
-          onClick={() => dispatch(addToCart(product))}
+          onClick={() => dispatch(addToCart(cartProducts))}
           className='mt-[20px] w-full h-[52px] bg-primary text-white font-raleway font-[600] text-center '
         >
           ADD TO CART
