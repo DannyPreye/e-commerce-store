@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../store/features/cartSlice';
+import { addToCart, addToAmount } from '../store/features/cartSlice';
 
 const ProductDetails = ({ product }) => {
   const dispatch = useDispatch();

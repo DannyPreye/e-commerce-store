@@ -15,9 +15,6 @@ const store = configureStore({
 });
 setupListeners(store.dispatch);
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
 store.dispatch(addToAmount());
 store.dispatch(addToCount());
 export default store;

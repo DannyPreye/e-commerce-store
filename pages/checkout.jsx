@@ -5,7 +5,11 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
 
+import { PaymentModal } from '../components';
+
 const Checkout = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
   const products = useSelector((state) => state.cart.products);
   const total = products.reduce((total, prod) => total + prod.totalPrice, 0);
 
@@ -35,7 +39,7 @@ const Checkout = () => {
     name: formik.values.name,
     phone: formik.values.phone,
   };
-  console.log('config', config);
+
   const initializePayment = usePaystackPayment(config);
   const totalAmount = products?.reduce(
     (total, product) => total + product.price,
@@ -51,8 +55,14 @@ const Checkout = () => {
           e.preventDefault();
           Object.values(formik.errors).length === 0 &&
             initializePayment(
-              () => console.log('success'),
-              () => console.log('failure')
+              () => {
+                setShowModal(true);
+                setModalMessage('Payment was successful');
+              },
+              () => {
+                setShowModal(true);
+                setModalMessage('Payment was not successful');
+              }
             );
         }}
         className='w-[80%] h-[80%] p-[16px] flex flex-col gap-y-4 border-t-[1px] mt-[2rem]'
@@ -107,6 +117,11 @@ const Checkout = () => {
           CHECKOUT
         </button>
       </form>
+      <PaymentModal
+        message={modalMessage}
+        show={showModal}
+        setClose={setShowModal}
+      />
     </main>
   );
 };
