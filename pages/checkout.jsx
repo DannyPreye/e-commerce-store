@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { usePaystackPayment } from 'react-paystack';
 import { useFormik } from 'formik';
@@ -12,6 +12,13 @@ const Checkout = () => {
   const [modalMessage, setModalMessage] = useState('');
   const products = useSelector((state) => state.cart.products);
   const total = products.reduce((total, prod) => total + prod.totalPrice, 0);
+  const showAmountError = () => {
+    setModalMessage('Please add items to cart before coming to this page');
+    setShowModal(true);
+  };
+  useEffect(() => {
+    !total && showAmountError();
+  }, [total]);
 
   const formik = useFormik({
     initialValues: {
